@@ -1,12 +1,14 @@
-
 #include "Unit_PoESP32.h"
 
+/*! @brief Initialize the Unit PoESP32.*/
 void Unit_PoESP32::Init(HardwareSerial* serial, unsigned long baud, uint8_t RX,
                         uint8_t TX) {
     _serial = serial;
     _serial->begin(baud, SERIAL_8N1, RX, TX);
 }
 
+/*! @brief Waiting for a period of time to receive a message
+    @return Received messages.. */
 String Unit_PoESP32::waitMsg(unsigned long time) {
     String restr;
     unsigned long start = millis();
@@ -21,10 +23,13 @@ String Unit_PoESP32::waitMsg(unsigned long time) {
     return restr;
 }
 
+/*! @brief Send a command */
 void Unit_PoESP32::sendCMD(String command) {
     _serial->println(command);
 }
 
+/*! @brief Detecting device connection status
+    @return True if good connection, false otherwise. */
 bool Unit_PoESP32::checkDeviceConnect() {
     sendCMD("AT");
     _readstr = waitMsg(100);
@@ -35,6 +40,8 @@ bool Unit_PoESP32::checkDeviceConnect() {
     }
 }
 
+/*! @brief Detecting device ETH connection status
+    @return True if good connection, false otherwise. */
 bool Unit_PoESP32::checkETHConnect() {
     sendCMD("AT+CIPETH?");
     _readstr = waitMsg(1000);
@@ -46,6 +53,8 @@ bool Unit_PoESP32::checkETHConnect() {
     }
 }
 
+/*! @brief Create a TCP client
+    @return True if create successfully, false otherwise. */
 bool Unit_PoESP32::createTCPClient(String ip, int port) {
     sendCMD("AT+CIPCLOSE");
     delay(500);
@@ -58,6 +67,8 @@ bool Unit_PoESP32::createTCPClient(String ip, int port) {
     }
 }
 
+/*! @brief send a TCP data
+    @return True if send successfully, false otherwise. */
 bool Unit_PoESP32::sendTCPData(uint8_t* buffer, size_t size) {
     sendCMD("AT+CIPSEND=" + String(size) + "");
     delay(500);
@@ -72,6 +83,8 @@ bool Unit_PoESP32::sendTCPData(uint8_t* buffer, size_t size) {
     }
 }
 
+/*! @brief Create a MQTT client
+    @return True if create successfully, false otherwise. */
 bool Unit_PoESP32::createMQTTClient(String host, String port, String clientId,
                                     String user_name, String user_pwd) {
     sendCMD("AT+MQTTCLEAN=0");
@@ -89,6 +102,8 @@ bool Unit_PoESP32::createMQTTClient(String host, String port, String clientId,
     }
 }
 
+/*! @brief public a MQTT message
+    @return True if public successfully, false otherwise. */
 bool Unit_PoESP32::publicMQTTMsg(String topic, String payload, String qos) {
     delay(500);
     _readstr = waitMsg(500);
@@ -101,6 +116,8 @@ bool Unit_PoESP32::publicMQTTMsg(String topic, String payload, String qos) {
     }
 }
 
+/*! @brief subscribe a MQTT message
+    @return True if subscribe successfully, false otherwise. */
 bool Unit_PoESP32::subscribeMQTTMsg(String topic, String qos) {
     delay(500);
     sendCMD("AT+MQTTSUB=0,\"" + topic + "\"," + qos + "");
@@ -113,6 +130,8 @@ bool Unit_PoESP32::subscribeMQTTMsg(String topic, String qos) {
     }
 }
 
+/*! @brief Create a HTTP client
+    @return True if create successfully, false otherwise. */
 String Unit_PoESP32::createHTTPClient(http_method_t method,
                                       http_content_t content_type, String url,
                                       String payload) {
