@@ -1,18 +1,25 @@
 /*
-    Description:
-    Use UNIT PoESP32 connect to TCP Server
-    UNIT PoESP32 Connect to M5Core2 PORT-C (G13/14)
-    before compiling:
-    M5Core2: https://github.com/m5stack/M5Core2
-    M5GFX: https://github.com/m5stack/M5GFX
-    UNIT_PoESP32: https://github.com/m5stack/UNIT_PoESP32
+*******************************************************************************
+* Copyright (c) 2021 by M5Stack
+*                  Equipped with M5StickC sample source code
+*                          配套  M5StickC 示例源代码
+* Visit more information: https://docs.m5stack.com/en/unit/poesp32
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/poesp32
+*
+* Product: Unit PoESP32.
+* Date: 2022/7/8
+*******************************************************************************
+  UNIT PoESP32 Connect to M5StickC PORT-A (G32/33)
+  UNIT PoESP32 连接到 M5StickC PORT-A (G32/33)
+  Use UNIT PoESP32 to connect TCP server
+  使用UNIT PoESP32来连接TCP服务器
 */
 
-#include "UNIT_PoESP32.h"
-#include "M5Core2.h"
+#include "Unit_PoESP32.h"
+#include "M5StickC.h"
 #include "M5GFX.h"
 
-UNIT_PoESP32 eth;
+Unit_PoESP32 eth;
 uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05,
                   0x06, 0x07, 0x08, 0x09, 0x10};
 
@@ -22,13 +29,12 @@ M5Canvas canvas(&display);
 void setup() {
     M5.begin();
     display.begin();
+    display.setRotation(1);
     canvas.setColorDepth(1);  // mono color
-    canvas.setFont(&fonts::efontCN_14);
-    canvas.setTextSize(2);
     canvas.setPaletteColor(1, GREEN);
     canvas.createSprite(display.width(), display.height());
     canvas.setTextScroll(true);
-    eth.Init(&Serial2, 9600, 13, 14);
+    eth.Init(&Serial2, 9600, 33, 32);
     delay(10);
     canvas.println("wait device connect");
     canvas.pushSprite(0, 0);

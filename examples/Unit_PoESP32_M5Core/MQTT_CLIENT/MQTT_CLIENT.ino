@@ -1,12 +1,22 @@
 /*
-    Description:
-    Use UNIT PoESP32 to connect to the MQTT server, and implement subscription
-    and publishing messages. Check the status through Serial. 
+*******************************************************************************
+* Copyright (c) 2021 by M5Stack
+*                  Equipped with M5Core sample source code
+*                          配套  M5Core 示例源代码
+* Visit more information: https://docs.m5stack.com/en/unit/poesp32
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/poesp32
+*
+* Product: Unit PoESP32.
+* Date: 2022/7/8
+*******************************************************************************
+  Use UNIT PoESP32 to connect to the MQTT server, and implement subscription
+  and publishing messages. Check the status through Serial.
+  使用UNIT PoESP32连接到MQTT服务器，并实现订阅和发布信息。通过Serial检查状态。
 */
 
-#include "UNIT_PoESP32.h"
+#include "Unit_PoESP32.h"
 
-UNIT_PoESP32 eth;
+Unit_PoESP32 eth;
 
 void setup() {
     Serial.begin(115200);

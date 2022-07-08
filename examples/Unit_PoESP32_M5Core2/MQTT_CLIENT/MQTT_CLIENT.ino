@@ -1,18 +1,26 @@
 /*
-    Description:
-    Use UNIT PoESP32 connect to MQTT Server
-    UNIT PoESP32 Connect to M5Core2 PORT-C (G13/14)
-    before compiling:
-    M5Core2: https://github.com/m5stack/M5Core2
-    M5GFX: https://github.com/m5stack/M5GFX
-    UNIT_PoESP32: https://github.com/m5stack/UNIT_PoESP32
+*******************************************************************************
+* Copyright (c) 2021 by M5Stack
+*                  Equipped with M5Core2 sample source code
+*                          配套  M5Core2 示例源代码
+* Visit more information: https://docs.m5stack.com/en/unit/poesp32
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/poesp32
+*
+* Product: Unit PoESP32.
+* Date: 2022/7/8
+*******************************************************************************
+  UNIT PoESP32 Connect to M5Core2 PORT-C (G13/14)
+  UNIT PoESP32 连接到 M5Core2 端口-C（G13/14）。
+  Use UNIT PoESP32 to connect to the MQTT server, and implement subscription
+  and publishing messages. Check the status through Serial.
+  使用UNIT PoESP32连接到MQTT服务器，并实现订阅和发布信息。通过Serial检查状态。
 */
 
-#include "UNIT_PoESP32.h"
+#include "Unit_PoESP32.h"
 #include "M5Core2.h"
 #include "M5GFX.h"
 
-UNIT_PoESP32 eth;
+Unit_PoESP32 eth;
 String readstr;
 
 M5GFX display;

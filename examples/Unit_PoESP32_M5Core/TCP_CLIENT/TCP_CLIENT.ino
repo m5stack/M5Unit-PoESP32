@@ -1,11 +1,21 @@
 /*
-    Description:
-    Use UNIT PoESP32 to connect TCP server
+*******************************************************************************
+* Copyright (c) 2021 by M5Stack
+*                  Equipped with M5Core sample source code
+*                          配套  M5Core 示例源代码
+* Visit more information: https://docs.m5stack.com/en/unit/poesp32
+* 获取更多资料请访问: https://docs.m5stack.com/zh_CN/unit/poesp32
+*
+* Product: Unit PoESP32.
+* Date: 2022/7/8
+*******************************************************************************
+  Use UNIT PoESP32 to connect TCP server
+  使用UNIT PoESP32来连接TCP服务器
 */
 
-#include "UNIT_PoESP32.h"
+#include "Unit_PoESP32.h"
 
-UNIT_PoESP32 eth;
+Unit_PoESP32 eth;
 
 uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05,
                   0x06, 0x07, 0x08, 0x09, 0x10};

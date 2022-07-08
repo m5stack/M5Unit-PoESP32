@@ -1,6 +1,8 @@
-# UNIT PoESP32
+# M5Unit-PoESP32
 
 ## Overview
+
+### SKU:U138
 
 Contains M5Stack-**UNIT PoESP32** series related case programs.
 
@@ -10,5 +12,5 @@ Contains M5Stack-**UNIT PoESP32** series related case programs.
 
 ## License
 
-[UNIT PoESP32 - MIT](LICENSE)
+[M5Unit-PoESP32 - MIT](LICENSE)
 

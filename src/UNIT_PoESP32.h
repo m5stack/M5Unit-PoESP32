@@ -1,5 +1,15 @@
-
+/*!
+ * @brief An an ESP32 Ethernet Unit supports PoE From M5Stack
+ * @copyright Copyright (c) 2022 by M5Stack[https://m5stack.com]
+ *
+ * @Links [ACSSR](https://docs.m5stack.com/en/unit/poesp32)
+ * @version  V0.0.1
+ * @date  2022-07-08
+ */
+#ifndef _UNIT_POESP32_H_
+#define _UNIT_POESP32_H_
 #include <Arduino.h>
+#include "pins_arduino.h"
 
 typedef enum { HEAD = 1, GET, POST, PUT, DELETE } http_method_t;
 typedef enum {
@@ -9,7 +19,7 @@ typedef enum {
     TEXT_XML
 } http_content_t;
 
-class UNIT_PoESP32 {
+class Unit_PoESP32 {
    private:
     HardwareSerial *_serial;
     String _readstr;
@@ -37,3 +47,5 @@ class UNIT_PoESP32 {
         http_content_t content_type = APPLICATION_X_WWW_FORM_URLENCODED,
         String url = "", String payload = "");
 };
+
+#endif
