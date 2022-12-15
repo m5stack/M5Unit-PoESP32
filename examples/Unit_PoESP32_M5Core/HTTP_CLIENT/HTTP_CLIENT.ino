@@ -20,7 +20,7 @@ String readstr;
 
 void setup() {
     Serial.begin(115200);
-    eth.Init(&Serial2, 9600, 32, 26);
+    eth.Init(&Serial2, 9600, 16, 17);
     delay(10);
 
     Serial.println("wait device connect");
