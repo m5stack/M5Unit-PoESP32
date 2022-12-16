@@ -22,7 +22,7 @@ uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05,
 
 void setup() {
     Serial.begin(115200);
-    eth.Init(&Serial2, 9600, 32, 26);
+    eth.Init(&Serial2, 9600, 16, 17);
     delay(10);
     Serial.println("wait device connect");
     while (!eth.checkDeviceConnect()) {
